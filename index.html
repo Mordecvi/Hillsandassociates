@@ -29,15 +29,15 @@
         <div class="col-lg-8 col-md-8">
           <ul class="info">
             <li><i class="fa fa-envelope"></i> hillsrealty2018@gmail.com</li>
-            <li><i class="fa fa-map"></i> Area 47, Plot No. 47/1/303, Malawi</li>
+            <li><i class="fa fa-map"></i> Area 47, Plot No. 47/1/121, Malawi</li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-4">
           <ul class="social-links">
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.facebook.com/share/1GDNng27rL/?mibextid=qi2Omg"><i class="fab fa-facebook"></i></a></li>
             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
             <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=x61vxld"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
       </div>
@@ -118,18 +118,103 @@
     </div>
   </div>
 
+  <style>
+    .video-frame {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .video-frame video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  
+    .custom-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      padding: 15px 20px;
+      transition: 0.3s ease;
+    }
+  
+    .custom-play-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  
+    .custom-play-btn.hidden {
+      display: none;
+    }
+  </style>
+  
   <div class="video-content">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
           <div class="video-frame">
-            <img src="assets/images/video-frame.jpg" alt="">
-            <a href="#"><i class="fa fa-play"></i></a>
+            <video id="customVideo" poster="assets/images/thumbnail.jpg">
+              <source src="assets/images/WhatsApp Video 2025-07-27 at 17.03.26_710799cb.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="custom-play-btn" id="playPauseBtn">
+              <i class="fa fa-play" id="playIcon"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
+  <script>
+    const video = document.getElementById('customVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+  
+    let hasStarted = false;
+  
+    playPauseBtn.addEventListener('click', () => {
+      if (!hasStarted) {
+        video.currentTime = 10; // start from 10 seconds
+        hasStarted = true;
+      }
+  
+      if (video.paused) {
+        video.play();
+        playIcon.classList.replace('fa-play', 'fa-pause');
+      } else {
+        video.pause();
+        playIcon.classList.replace('fa-pause', 'fa-play');
+      }
+    });
+  
+    // Optional: Hide play button while playing and show it when paused
+    video.addEventListener('play', () => {
+      playPauseBtn.classList.add('hidden');
+    });
+  
+    video.addEventListener('pause', () => {
+      playPauseBtn.classList.remove('hidden');
+    });
+  
+    // Optional: clicking the video also pauses/plays it
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playIcon.classList.replace('fa-play', 'fa-pause');
+      } else {
+        video.pause();
+        playIcon.classList.replace('fa-pause', 'fa-play');
+      }
+    });
+  </script>
 
   <div class="fun-facts">
     <div class="container">
@@ -139,19 +224,19 @@
             <div class="row">
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="5" data-speed="1000"></h2>
+                  <h2 class="timer count-title count-number" data-to="6" data-speed="1000"></h2>
                    <p class="count-text">Years in Business</p>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="100" data-speed="1000"></h2>
+                  <h2 class="timer count-title count-number" data-to="123" data-speed="1000"></h2>
                   <p class="count-text">Properties Managed</p>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
+                  <h2 class="timer count-title count-number" data-to="98" data-speed="1000"></h2>
                   <p class="count-text">Successful Property Sales</p>
                 </div>
               </div>
@@ -177,13 +262,13 @@
               <div class="nav-wrapper ">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Apartment</button>
+                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Plots</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Villa House</button>
+                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Properties</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
+                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Rentals</button>
                   </li>
                 </ul>
               </div>              
@@ -202,7 +287,7 @@
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <img src="assets/images/house 3.jpg" alt="">
+                      <img src="assets/images/plot.jpg" alt="">
                     </div>
                     <div class="col-lg-3">
                       <h4>Extra Info About Property</h4>
@@ -230,7 +315,7 @@
                       <img src="assets/images/house 1.jpg" alt="">
                     </div>
                     <div class="col-lg-3">
-                      <h4>Detail Info About Villa</h4>
+                      <h4>Detail Info About Properties</h4>
                       <p>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
                       <div class="icon-button">
                         <a href="https://wa.me/+265998733455"><i class="fa fa-calendar"></i> Schedule a visit</a>
@@ -270,7 +355,6 @@
       </div>
     </div>
   </div>
-
   <div class="properties section">
     <div class="container">
       <div class="row">
@@ -284,16 +368,13 @@
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
-            <span class="category">Luxury Villa</span>
-            <h6>K224,00,000</h6>
-            <h4><a href="property-details.html">Area 43 </a></h4>
+            <a href="property-details.html"><img src="assets/images/IMG-20250306-WA0035.jpg" alt=""></a>
+            <span class="category">property</span>
+            <h6>K205,000,000</h6>
+            <h4><a href="property-details.html">Lilongwe, Wakawaka </a></h4>
             <ul>
-              <li>Bedrooms: <span>8</span></li>
-              <li>Bathrooms: <span>8</span></li>
-              <li>Area: <span>545m2</span></li>
-              <li>Floor: <span>3</span></li>
-              <li>Parking: <span>6 spots</span></li>
+              This commercial property is located in Area 36, directly opposite Simso Filling Station. The property is a house with a lounge, 
+              dining area, kitchen, 3 bedrooms, and a toilet - used as an office building. Additional amenities include a summer hut and servant quarters. It is securely enclosed with a brick perimeter fence at the back and a wired fence at the front. The plot mea- sures approximately 0.15 Hectares.</li>
             </ul>
             <div class="main-button">
               <a href="https://wa.me/+265998733455">Schedule a visit</a>
@@ -302,16 +383,15 @@
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-02.jpg" alt=""></a>
-            <span class="category">Luxury Villa</span>
-            <h6>K224,00,000</h6>
-            <h4><a href="property-details.html">Area 43 </a></h4>
+            <a href="property-details.html"><img src="assets/images/IMG-20250319-WA0060.jpg" alt=""></a>
+            <span class="category">Property</span>
+            <h6>K430,000,000</h6>
+            <h4><a href="property-details.html">Lilongwe Area 43 </a></h4>
             <ul>
-              <li>Bedrooms: <span>6</span></li>
-              <li>Bathrooms: <span>5</span></li>
-              <li>Area: <span>450m2</span></li>
-              <li>Floor: <span>3</span></li>
-              <li>Parking: <span>8 spots</span></li>
+              <li>This is a Residential Property located at New Area 43. The property has 3 bedrooms (Master ensuite),
+                 lounge, separate dining, Kitchen (with pantry), bathroom & toilet, servant quarters, and a spacious 
+                 compound. The house is enclosed by 
+                a perimeter Brick Wall. The Plot measures approx. 0.15 Hectares.</li>
             </ul>
             <div class="main-button">
               <a href="https://wa.me/+265998733455">Schedule a visit</a>
@@ -320,16 +400,17 @@
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-03.jpg" alt=""></a>
-            <span class="category">Luxury Villa</span>
-          <h6>K224,00,000</h6>
-            <h4><a href="property-details.html">Area 43 </a></h4>
+            <a href="property-details.html"><img src="assets/images/WhatsApp Image 2025-07-27 at 16.55.47_c0a4833e.jpg" alt=""></a>
+            <span class="category">Plots</span>
+          <h6>K1,750,000 - K3,400,000</h6>
+            <h4><a href="property-details.html">Lilongwe, Area 3</a></h4>
             <ul>
-              <li>Bedrooms: <span>5</span></li>
-              <li>Bathrooms: <span>4</span></li>
-              <li>Area: <span>225m2</span></li>
-              <li>Floor: <span>3</span></li>
-              <li>Parking: <span>10 spots</span></li>
+              <li>Find your perfect plot at Airwing, just 1.5KM from Kasiya 
+                Tarmac Road, right after Baron Estate! With water and electricity within the 
+                vicinity, this prime location offers easy access and all the essentials
+                 for your dream home or investment.
+                 This weekend only, enjoy a 30% DISCOUNT on your purchase! 
+                 Secure your spot today-opportunity awaits!</li>
             </ul>
             <div class="main-button">
               <a href="https://wa.me/+265998733455">Schedule a visit</a>
@@ -338,16 +419,15 @@
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-04.jpg" alt=""></a>
-            <span class="category">Apartment</span>
-          <h6>K224,00,000</h6>
+            <a href="property-details.html"><img src="assets/images/IMG-20250716-WA0013.jpg" alt=""></a>
+            <span class="category">Rental</span>
+          <h6>$700/Month</h6>
             <h4><a href="property-details.html">Area 43 </a></h4>
             <ul>
-              <li>Bedrooms: <span>4</span></li>
-              <li>Bathrooms: <span>3</span></li>
-              <li>Area: <span>125m2</span></li>
-              <li>Floor: <span>25th</span></li>
-              <li>Parking: <span>2 cars</span></li>
+              <li>This is a residential property located in Area 3 The property has 
+                4 bedrooms (2 Bedrooms ensuite Including Master Bedroom),
+                 Lounge, separate Dining and Kitchen (with pantry), common Bathroom 
+                 & Toilet, and Servant's quarters.</li>
             </ul>
             <div class="main-button">
               <a href="https://wa.me/+265998733455">Schedule a visit</a>
@@ -356,16 +436,15 @@
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-05.jpg" alt=""></a>
-            <span class="category">Penthouse</span>
-           <h6>K224,00,000</h6>
-            <h4><a href="property-details.html">Area 43 </a></h4>
+            <a href="property-details.html"><img src="assets/images/Malls .jpg" alt=""></a>
+            <span class="category">Plots</span>
+           <h6>K750,000 - K2,500,000</h6>
+            <h4><a href="property-details.html">Lilongwe Airwing-Nakuwawa </a></h4>
             <ul>
-              <li>Bedrooms: <span>4</span></li>
-              <li>Bathrooms: <span>4</span></li>
-              <li>Area: <span>180m2</span></li>
-              <li>Floor: <span>38th</span></li>
-              <li>Parking: <span>2 cars</span></li>
+              <li>An exciting opportunity to acquire a commercial plot has
+                 arrived! These plots are located along Airwing Road, near the newly established 
+                Mzinda and right at the heart of Nakuwawa Trading Centre. Don’t
+                 miss out—secure your commercial plot today!</li>
             </ul>
             <div class="main-button">
               <a href="https://wa.me/+265998733455">Schedule a visit</a>
@@ -374,16 +453,17 @@
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-06.jpg" alt=""></a>
-            <span class="category">Modern Condo</span>
-           <h6>K224,00,000</h6>
-            <h4><a href="property-details.html">Area 43 </a></h4>
+            <a href="property-details.html"><img src="assets/images/" alt=""></a>
+            <span class="category">Property</span>
+           <h6>K240,000,000</h6>
+            <h4><a href="property-details.html">Lilongwe, Area 49, 
+              New Gulliver </a></h4>
             <ul>
-              <li>Bedrooms: <span>3</span></li>
-              <li>Bathrooms: <span>2</span></li>
-              <li>Area: <span>165m2</span></li>
-              <li>Floor: <span>26th</span></li>
-              <li>Parking: <span>3 cars</span></li>
+              <li>This is a Residential Property located at Area 49, 
+                New Gulliver. The property has 3 bedrooms (Master ensuite), 
+                lounge, separate dining, Kitchen (with pantry), bathroom & toilet. It also features an 
+                outdoor swimming pool The house is enclosed by a perimeter
+                 Brick Wall. The Plot measures approx. 0.1125 Hectares.</li>
             </ul>
             <div class="main-button">
               <a href="https://wa.me/+265998733455">Schedule a visit</a>
@@ -410,7 +490,7 @@
   <div class="contact-content">
     <div class="container">
       <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-12">
           <div id="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d277.57721040406733!2d33.745045945461094!3d-13.964215065253097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2smw!4v1738844660317!5m2!1sen!2smw" width="100%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
           </div>
@@ -429,41 +509,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5">
-          <form id="contact-form" action="" method="post">
-            <div class="row">
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="name">Full Name</label>
-                  <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="email">Email Address</label>
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="subject">Subject</label>
-                  <input type="subject" name="subject" id="subject" placeholder="Subject..." autocomplete="on" >
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="message">Message</label>
-                  <textarea name="message" id="message" placeholder="Your Message"></textarea>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="orange-button">Send Message</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
+    
       </div>
     </div>
   </div>
@@ -472,7 +518,7 @@
     <div class="container">
       <div class="col-lg-12">
         <p>Copyright © 2025hills & AssociatesLimited. All rights reserved. 
-        developer:<a href="https://wa.me/+265990889006" target="_blank" title="Mordecai's WhatsApp Number">Mordecai</a></p>
+        Designed and developed by :<a href="https://wa.me/+265885721423" target="_blank" title="Mordecai's WhatsApp Number"> LexoraWorks</a></p>
       </div>
     </div>
   </footer>
