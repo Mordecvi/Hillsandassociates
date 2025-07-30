@@ -835,11 +835,11 @@ Banner Style
 }
 
 .main-banner .item h2 {
-  font-size: 62px;
+  font-size: 40px;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-  line-height: 72px;
+  line-height: 50px;
   width: 50%;
   margin-bottom: 0px;
 }
